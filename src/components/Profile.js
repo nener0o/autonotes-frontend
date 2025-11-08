@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProfile, logout } from '../services/authService';
+import { getProfile, logout, getUsernameFromToken } from '../services/authService';
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
