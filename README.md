@@ -1,70 +1,162 @@
-# Getting Started with Create React App
+# 🎓 Autonotes Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)
+![React Router](https://img.shields.io/badge/React_Router-6.0+-orange?logo=reactrouter)
+![Axios](https://img.shields.io/badge/Axios-HTTP_client-green)
+![JWT](https://img.shields.io/badge/Auth-JWT-purple)
 
-In the project directory, you can run:
+Frontend-приложение для платформы **Autonotes** - инновационного сервиса для автоматического создания конспектов лекций из фотографий учебных досок.
 
-### `npm start`
+[Демо](#) • [Документация](#) • [Бэкенд](https://github.com/IWKMS99/AutonotesBackend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Возможности
 
-### `npm test`
+### 🔐 Система аутентификации
+- **Регистрация** новых пользователей
+- **Безопасный вход** с JWT токенами
+- **Автоматическое обновление** авторизации
+- **Защищенные маршруты**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👤 Управление профилем
+- **Просмотр** личной информации
+- **Безопасный выход** из системы
+- **Интуитивный интерфейс**
 
-### `npm run build`
+### 🛡️ Безопасность
+- **JWT токены** для аутентификации
+- **Защита маршрутов** от неавторизованного доступа
+- **Обработка ошибок** API
+- **Rate limiting** защита
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Быстрый старт
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Предварительные требования
+- Node.js 16+
+- npm или yarn
+- Бэкенд Autonotes ([репозиторий](https://github.com/IWKMS99/AutonotesBackend))
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Установка и запуск
 
-### `npm run eject`
+# Клонирование репозитория
+git clone https://github.com/nener0o/autonotes-frontend.git
+cd autonotes-frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Установка зависимостей
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Настройка окружения
+cp .env.example .env
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Запуск в режиме разработки
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Приложение будет доступно по адресу: http://localhost:3000
 
-## Learn More
+Настройка окружения
+Создайте файл .env в корне проекта:
+REACT_APP_API_BASE_URL=http://localhost:8080/api/v1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🏗️ Архитектура проекта
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+autonotes-frontend/
+├── public/                 # Статические файлы
+├── src/
+│   ├── api/               # Настройка HTTP-клиента
+│   │   └── axios.js       # Конфигурация Axios с интерцепторами
+│   ├── components/        # React компоненты
+│   │   ├── AuthForm.js    # Форма аутентификации
+│   │   ├── Profile.js     # Компонент профиля
+│   │   └── ProtectedRoute.js # HOC для защиты маршрутов
+│   ├── services/          # Бизнес-логика
+│   │   └── authService.js # Сервис аутентификации
+│   ├── App.js             # Главный компонент
+│   └── index.js           # Точка входа
+├── package.json
+└── README.md
 
-### Code Splitting
+🔧 Технологии
+Frontend Framework: React 18.2.0
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Routing: React Router DOM 6.0+
 
-### Analyzing the Bundle Size
+HTTP Client: Axios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+State Management: React Hooks + LocalStorage
 
-### Making a Progressive Web App
+Authentication: JWT Tokens
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Development: Create React App
 
-### Advanced Configuration
+📡 Интеграция с API
+Приложение взаимодействует с бэкенд-сервисом Autonotes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Основные endpoints:
+POST /auth/register - Регистрация пользователя
 
-### Deployment
+POST /auth/login - Аутентификация пользователя
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+GET /users/{username} - Получение данных профиля
 
-### `npm run build` fails to minify
+Пример запроса:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// Автоматическая подстановка JWT токена
+const response = await api.get('/users/test_user');
+
+🎯 Использование
+Для студентов:
+Зарегистрируйтесь на платформе
+
+Войдите в свой аккаунт
+
+Просматривайте личный профиль
+
+Скоро: Загружайте фотографии для создания конспектов
+
+Для разработчиков:
+
+# Установка зависимостей
+npm install
+
+# Запуск в development режиме
+npm start
+
+# Сборка для production
+npm run build
+
+# Запуск тестов
+npm test
+
+🤝 Разработка
+Установка для разработки
+
+git clone https://github.com/nener0o/autonotes-frontend.git
+cd autonotes-frontend
+npm install
+npm start
+
+Внесение изменений
+Форкните репозиторий
+
+Создайте feature ветку (git checkout -b feature/amazing-feature)
+
+Закоммитьте изменения (git commit -m 'Add amazing feature')
+
+Запушьте ветку (git push origin feature/amazing-feature)
+
+Откройте Pull Request
+
+🐛 Обработка ошибок
+Приложение обрабатывает основные сценарии ошибок:
+
+401 Unauthorized - Автоматический logout и redirect на /login
+
+409 Conflict - Пользователь уже существует
+
+429 Too Many Requests - Превышен лимит запросов
+
+500 Internal Server Error - Общая ошибка сервера
+
