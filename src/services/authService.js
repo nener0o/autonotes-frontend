@@ -1,5 +1,20 @@
 import api from '../api/axios';
 
+const getUsernameFromToken = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return null;
+
+  try {
+    const payload = token.split('.')[1];
+    const decodedPayload = atob(payload);
+    const parsedPayload = JSON.parse(decodedPayload);
+    return parsedPayload.sub;
+  } catch (error) {
+    console.error("Failed to decode token", error);
+    return null;
+  }
+};
+
 const handleError = (error) => {
   if (error.response?.data) {
     const message = error.response.data.message || error.response.data.error;
@@ -42,3 +57,5 @@ export const logout = () => {
   localStorage.removeItem('token');
   window.location.href = '/login';
 };
+
+export { getUsernameFromToken };
