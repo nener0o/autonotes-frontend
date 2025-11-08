@@ -9,8 +9,12 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // ВРЕМЕННО: используем тестовое имя пользователя
-        const username = 'test_user'; // TODO: заменить на динамическое значение
+        // Получаем имя пользователя динамически из токена!
+        const username = getUsernameFromToken(); 
+        if (!username) {
+            throw new Error('Не удалось получить имя пользователя из токена.');
+        }
+        
         const profileData = await getProfile(username);
         setProfile(profileData);
       } catch (err) {
